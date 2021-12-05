@@ -182,8 +182,10 @@
         //Make an ajax call to delete a model object
         function deleteModel(id) {
             var result = confirm("Are you sure to delete?");
+            var csrfToken = $("input[name='__RequestVerificationToken']").val();
             if (result) {
                 $.ajax({
+                    headers: { __RequestVerificationToken: csrfToken },
                     url: '/api/Product/' + id,
                     type: 'DELETE',
                     success: function (result) {
