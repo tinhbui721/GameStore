@@ -1,0 +1,45 @@
+﻿@model IEnumerable<GameStore.Domain.Model.Feedback>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách các phản hồi</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            Tiêu đề
+        </th>
+        <th>
+            Nội dung
+        </th>
+        <th>
+            Ngày gửi phản hồi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateFeedback)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.IdFeedback }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdFeedback }) |*@
+            @Html.ActionLink("Xóa", "Delete", new { id=item.IdFeedback })
+        </td>
+    </tr>
+}
+
+</table>

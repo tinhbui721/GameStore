@@ -1,0 +1,49 @@
+﻿@model IEnumerable<GameStore.Domain.Model.Review>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Review product</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductName)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.User_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDate)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ReviewId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReviewId }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReviewId })
+        </td>
+    </tr>
+}
+
+</table>
