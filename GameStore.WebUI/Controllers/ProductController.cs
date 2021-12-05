@@ -62,6 +62,8 @@ namespace GameStore.WebUI.Controllers
 
             using (GameStoreDBContext context = new GameStoreDBContext())
             {
+                //var query = "select * from Products where ProductName = '" + productname + "'";
+                //list = context.Database.SqlQuery<ProductDTO>(query).ToList();
                 if (String.IsNullOrEmpty(productname))
                 {
                     var query = from product in context.Products
@@ -89,6 +91,8 @@ namespace GameStore.WebUI.Controllers
             ProductDTO model = null;
             using (GameStoreDBContext context = new GameStoreDBContext())
             {
+                //var query = @"Select * from Products where ProductId = '" + id + "'";
+                //model = context.Database.SqlQuery<ProductDTO>(query).FirstOrDefault();
                 List<Review> model2 = context.Reviews.Where(x => x.ProductId == id).ToList();
                 foreach (var item in model2)
                 {
