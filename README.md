@@ -13,7 +13,9 @@ git clone https://github.com/tinhbui721/GameStore.git
 ```
 
 2. Thiết lập Startup Project
+```shell
 Mở project -> click chuột phải GameStore.WebUI -> chọn Set as Startup Project
+```
 
 3. Khởi chạy ứng dụng
 
