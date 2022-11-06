@@ -67,7 +67,7 @@ else
                         {
                             @Html.AntiForgeryToken();
                             <input type="hidden" name="id" value="@order.OrderId">
-                            <input type="submit" onclick="return confirm('Are you sure to delete?')" class="btn btn-danger" value="Cancel Order" />
+                            <input type="submit" onclick="return confirm('Are you sure to cancel order?')" class="btn btn-danger" value="Cancel Order" />
                         }
                     </div>
                 </div>

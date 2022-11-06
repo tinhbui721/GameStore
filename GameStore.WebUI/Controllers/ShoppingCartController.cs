@@ -44,14 +44,23 @@ namespace GameStore.WebUI.Controllers
                     if (value.Quantity == 0)
                     {
                         cart.AddItem(value.Id, product);
+                        ViewBag.code = 2;
+
                     }
                     else
                     {
+                        if (value.Quantity == -99)
+                        {
+                            ViewBag.code = 3;
+                        }
+                        else
+                        {
+                            ViewBag.code = 1;
+                        }
                         cart.SetItemQuantity(value.Id, value.Quantity, product);
                     }
                 }
             }
-
             Session["CartCount"] = cart.GetItems().Count();
             return View("Index", cart);
         }
@@ -69,8 +78,8 @@ namespace GameStore.WebUI.Controllers
         }
 
         [ValidateAntiForgeryToken]
-         public ActionResult PlaceOrder(CheckoutViewModel value)
-        {          
+        public ActionResult PlaceOrder(CheckoutViewModel value)
+        {
             ShoppingCart cart = (ShoppingCart)Session["ShoppingCart"];
             if (cart == null)
             {
@@ -181,7 +190,7 @@ namespace GameStore.WebUI.Controllers
                 ShoppingCart cart = (ShoppingCart)Session["ShoppingCart"];
                 CheckoutViewModel value = (CheckoutViewModel)Session["Checkout"];
                 if (value != null)
-                {                    
+                {
                     try
                     {
                         using (GameStoreDBContext context = new GameStoreDBContext())

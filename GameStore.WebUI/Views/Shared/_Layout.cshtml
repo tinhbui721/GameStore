@@ -14,6 +14,7 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/fancy")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
         .vcenter {
             display: inline-block;
@@ -39,21 +40,20 @@
                 <ul class="nav navbar-nav">
                     <li class="@Html.IsSelected(actions: "Console", controllers: "Product")">@Html.ActionLink("Console", "Console", "Product", new { area = "" }, null)</li>
                     <li class="@Html.IsSelected(actions: "Accessory", controllers: "Product")">@Html.ActionLink("Accessory", "Accessory", "Product", new { area = "" }, null)</li>
-                    <li class="@Html.IsSelected(actions: "Game", controllers: "Product")">@Html.ActionLink("Game", "Game", "Product", new { area = "" }, null)</li>     
-                  
+                    <li class="@Html.IsSelected(actions: "Game", controllers: "Product")">@Html.ActionLink("Game", "Game", "Product", new { area = "" }, null)</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container">        
+    <div class="container">
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Rong's Game Store</p>
         </footer>
     </div>
-
     @RenderSection("scripts", required: false)
 </body>
 </html>
