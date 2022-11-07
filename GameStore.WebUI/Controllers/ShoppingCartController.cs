@@ -27,7 +27,7 @@ namespace GameStore.WebUI.Controllers
             return View(cart);
         }
 
-        [ValidateAntiForgeryToken]
+
         public ActionResult CreateOrUpdate(CartViewModel value)
         {
             ShoppingCart cart = (ShoppingCart)Session["ShoppingCart"];
@@ -41,14 +41,6 @@ namespace GameStore.WebUI.Controllers
                 Product product = context.Products.Find(value.Id);
                 if (product != null)
                 {
-                    if (value.Quantity == 0)
-                    {
-                        cart.AddItem(value.Id, product);
-                        ViewBag.code = 2;
-
-                    }
-                    else
-                    {
                         if (value.Quantity == -99)
                         {
                             ViewBag.code = 3;
@@ -58,7 +50,6 @@ namespace GameStore.WebUI.Controllers
                             ViewBag.code = 1;
                         }
                         cart.SetItemQuantity(value.Id, value.Quantity, product);
-                    }
                 }
             }
             Session["CartCount"] = cart.GetItems().Count();

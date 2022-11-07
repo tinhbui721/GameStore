@@ -8,27 +8,31 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GameStore.Domain.Identity;
+using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
     public class ProductController : Controller
     {
-        public ActionResult Console()
+        public ActionResult Console(int code = 0)
         {
             List<ProductDTO> list = GetProductsByCategory(1);
             ViewBag.Title = "Console";
+            ViewBag.code = code;
             return View("List", list);
         }
-        public ActionResult Accessory()
+        public ActionResult Accessory(int code = 0)
         {
             List<ProductDTO> list = GetProductsByCategory(2);
             ViewBag.Title = "Accessory";
+            ViewBag.code = code;
             return View("List", list);
         }
-        public ActionResult Game()
+        public ActionResult Game(int code = 0)
         {
             List<ProductDTO> list = GetProductsByCategory(3);
             ViewBag.Title = "Game";
+            ViewBag.code = code;
             return View("List", list);
         }
 
@@ -199,6 +203,31 @@ namespace GameStore.WebUI.Controllers
             }
 
             return View(list);
+        }
+
+        public ActionResult AddToCart(CartViewModel value)
+        {
+            ShoppingCart cart = (ShoppingCart)Session["ShoppingCart"];
+            if (cart == null)
+            {
+                cart = new ShoppingCart();
+                Session["ShoppingCart"] = cart;
+            }
+            using (GameStoreDBContext context = new GameStoreDBContext())
+            {
+                Product product = context.Products.Find(value.Id);
+                if (product != null)
+                {
+                    if (value.Quantity == 0)
+                    {
+                        cart.AddItem(value.Id, product);
+                        Session["CartCount"] = cart.GetItems().Count();
+                        return RedirectToAction(product.Category.CategoryName, new {code = 2});
+                    }
+                }
+            }
+            Session["CartCount"] = cart.GetItems().Count();
+            return null;
         }
     }
 }

@@ -5,37 +5,51 @@
 }
 @Html.Partial("_FrontPartial")
 <section id='content'>
-@foreach (var item in Model)
-{
-    if ((counter + 1) % 4 == 1)
+    @foreach (var item in Model)
     {
-        @:<div class="row productitem">
-    }
-        <div class="col-sm-3 special_grid_col">
-            <div class="special_box">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">@item.ProductName</div>
-                    <div class="panel-body"><a href='/Product/Detail/@item.ProductId'><img src="~/images/@item.Image" class="img-responsive" style="width:100%" alt="Image"></a></div>
-                    <div class="special_item_price">
-                        <span class="price-old">@Html.FormattedCurrency(item.Price)</span><span class="price-new">@Html.FormattedCurrency(item.GetDiscountedPrice())</span>
-                    </div>
-                    <div class="panel-footer">
-                        @using (Html.BeginForm("CreateOrUpdate", "ShoppingCart", FormMethod.Post))
-                        {
-                            @Html.AntiForgeryToken();
-                            <input type='hidden' name='id' value='@item.ProductId'>
-                            <input type='hidden' name='quantity' value='0'>
-                            <input type='submit' class='btn btn-warning' value='Add to Cart'>
-                        }
+        if ((counter + 1) % 4 == 1)
+        {
+            @:<div class="row productitem">
+            }
+            <div class="col-sm-3 special_grid_col">
+                <div class="special_box">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">@item.ProductName</div>
+                        <div class="panel-body"><a href='/Product/Detail/@item.ProductId'><img src="~/images/@item.Image" class="img-responsive" style="width:100%" alt="Image"></a></div>
+                        <div class="special_item_price">
+                            <span class="price-old">@Html.FormattedCurrency(item.Price)</span><span class="price-new">@Html.FormattedCurrency(item.GetDiscountedPrice())</span>
+                        </div>
+                        <div class="panel-footer">
+                            @using (Html.BeginForm("AddToCart", "Product", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken();
+                                <input type='hidden' name='id' value='@item.ProductId'>
+                                <input type='hidden' name='quantity' value='0'>
+                                <input type='submit' class='btn btn-warning' value='Add to Cart'>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    if ((counter + 1) % 4 == 0 || counter == Model.Count() - 1)
-    {
-        @:</div>
+            if ((counter + 1) % 4 == 0 || counter == Model.Count() - 1)
+            {
+            @:</div>
+        }
+        counter++;
     }
-    counter++;
-}
 </section>
+
+@if (@ViewBag.code == 2)
+{
+    <script type="text/javascript">
+        console.log("oke");
+        swal({
+            icon: 'success',
+            title: 'Add to cart success',
+            text: 'Add product to cart success',
+            buttons: false,
+            timer: 1500
+        })
+    </script>
+}
