@@ -39,9 +39,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="@Html.IsSelected(actions: "Console", controllers: "Product")">@Html.ActionLink("Console", "Console", "Product", new { area = "" }, null)</li>
+                    <li class="@Html.IsSelected(actions: "Handheld", controllers: "Product")">@Html.ActionLink("Handheld", "Handheld", "Product", new { area = "" }, null)</li>
                     <li class="@Html.IsSelected(actions: "Accessory", controllers: "Product")">@Html.ActionLink("Accessory", "Accessory", "Product", new { area = "" }, null)</li>
                     <li class="@Html.IsSelected(actions: "Game", controllers: "Product")">@Html.ActionLink("Game", "Game", "Product", new { area = "" }, null)</li>
-
+                    <li class="@Html.IsSelected(actions: "Headset", controllers: "Product")">@Html.ActionLink("Headset", "Headset", "Product", new { area = "" }, null)</li>
+                    <li class="@Html.IsSelected(actions: "Keyboard", controllers: "Product")">@Html.ActionLink("Keyboard", "Keyboard", "Product", new { area = "" }, null)</li>
+                    <li class="@Html.IsSelected(actions: "MouseAndSpeaker", controllers: "Product")">@Html.ActionLink("MouseAndSpeaker", "MouseAndSpeaker", "Product", new { area = "" }, null)</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -15,5 +15,7 @@ namespace GameStore.WebUI.Areas.Admin.Models.DTO
         {
             return Price * (100 - Discount) / 100;
         }
+
+        public List<ProductDTO> Products { get; set; }
     }
 }

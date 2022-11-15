@@ -35,6 +35,34 @@ namespace GameStore.WebUI.Controllers
             ViewBag.code = code;
             return View("List", list);
         }
+        public ActionResult Handheld(int code = 0)
+        {
+            List<ProductDTO> list = GetProductsByCategory(4);
+            ViewBag.Title = "Handheld";
+            ViewBag.code = code;
+            return View("List", list);
+        }
+        public ActionResult Headset(int code = 0)
+        {
+            List<ProductDTO> list = GetProductsByCategory(5);
+            ViewBag.Title = "Headset";
+            ViewBag.code = code;
+            return View("List", list);
+        }
+        public ActionResult Keyboard(int code = 0)
+        {
+            List<ProductDTO> list = GetProductsByCategory(6);
+            ViewBag.Title = "Keyboard";
+            ViewBag.code = code;
+            return View("List", list);
+        }
+        public ActionResult MouseAndSpeaker(int code = 0)
+        {
+            List<ProductDTO> list = GetProductsByCategory(7);
+            ViewBag.Title = "Mouse & Speaker";
+            ViewBag.code = code;
+            return View("List", list);
+        }
 
         private List<ProductDTO> GetProductsByCategory(int categoryid)
         {
@@ -95,8 +123,6 @@ namespace GameStore.WebUI.Controllers
             ProductDTO model = null;
             using (GameStoreDBContext context = new GameStoreDBContext())
             {
-               //var query = @"Select * from Products where ProductId = '" + id + "'";
-               // model = context.Database.SqlQuery<ProductDTO>(query).FirstOrDefault();
                 List<Review> model2 = context.Reviews.Where(x => x.ProductId == id).ToList();
                 foreach (var item in model2)
                 {
@@ -110,8 +136,7 @@ namespace GameStore.WebUI.Controllers
                             select new ProductDTO { ProductId = product.ProductId, ProductName = product.ProductName, CategoryId = product.CategoryId, CategoryName = category.CategoryName, Price = product.Price, Image = product.Image, Condition = product.Condition, Discount = product.Discount, UserId = product.UserId };
                 model = query.FirstOrDefault();
                 model.Reviews = model2;
-                //var query2 = from review in context.Reviews where review.ProductId == id select new Review { ReviewId=review.ReviewId,UserId=review.UserId,Comments=review.Comments,ReviewDate=review.ReviewDate };
-
+                model.Products = GetProductsByCategory(model.CategoryId).Where(p => p.ProductId != id).ToList();
             }
             return View(model);
         }
