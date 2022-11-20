@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Rong's Game Store</title>
+    <title>@ViewBag.Title - Game Store</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
@@ -59,13 +59,12 @@
                     <li><a href="#section3">Geo</a></li>
                 </ul><br>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 @RenderBody()
             </div>
         </div>
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Rong's Game Store</p>
+        <footer class="text-primary text-center">
+            <p><b><i>&copy; @DateTime.Now.Year - Game Store</i></b></p>
         </footer>
     </div>
     @RenderSection("scripts", required: false)
