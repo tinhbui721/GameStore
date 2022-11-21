@@ -2,26 +2,92 @@
     ViewBag.Title = "Admin: Dashboard";
 }
 
-<h2>Game Store Management</h2>
-<div class="row">
-    <div class="col-md-4">
-        <ul class="list-group">
-            <li class="list-group-item"><b>Statistics</b></li>
-            <li class="list-group-item"><span class="badge" id="user">0</span>@Html.ActionLink("Users", "AppUser", "Account", new { area = "Admin" }, new { @class = "btn btn-primary" })</li>
-            <li class="list-group-item"><span class="badge" id="role">0</span>@Html.ActionLink("Roles", "AppRole", "Account", new { area = "Admin" }, new { @class = "btn btn-primary" })</li>
-            <li class="list-group-item"><span class="badge" id="product">0</span>@Html.ActionLink("Products", "Product", "Store", new { area = "Admin" }, new { @class = "btn btn-primary" })</li>
-            <li class="list-group-item"><span class="badge" id="category">0</span>@Html.ActionLink("Categories", "Category", "Store", new { area = "Admin" }, new { @class = "btn btn-primary" })</li>
-            <li class="list-group-item"><span class="badge" id="order">0</span>@Html.ActionLink("Orders", "Order", "Store", new { area = "Admin" }, new { @class = "btn btn-primary" })</li>
-        </ul>
+<style>
+    .card-body {
+        margin-bottom: 2rem;
+        padding: 2rem;
+        font-size: 20px;
+    }
+
+    .card {
+        border-radius: 5px;
+    }
+
+    .card-footer .btn {
+        width: 100%;
+    }
+
+    .row > div {
+        margin-bottom: 2rem;
+    }
+</style>
+
+<h2>Dashboard</h2>
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white h-100">
+                    <div class="card-body py-5">Users: <span id="user"></span></div>
+                    <div class="card-footer d-flex">
+                        @Html.ActionLink("View Details", "AppUser", "Account", new { area = "Admin" }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-warning text-dark h-100">
+                    <div class="card-body py-5">Roles: <span id="role"></span></div>
+                    <div class="card-footer d-flex">
+                        @Html.ActionLink("View Details", "AppRole", "Account", new { area = "Admin" }, new { @class = "btn btn-warning" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-success text-white h-100">
+                    <div class="card-body py-5">Products: <span id="product"></span></div>
+                    <div class="card-footer d-flex">
+                        @Html.ActionLink("Products", "Product", "Store", new { area = "Admin" }, new { @class = "btn btn-success" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card bg-danger text-white h-100">
+                    <div class="card-body py-5">Categories: <span id="category"></span></div>
+                    <div class="card-footer d-flex">
+                        @Html.ActionLink("Products", "Product", "Store", new { area = "Admin" }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-info text-white h-100">
+                    <div class="card-body py-5">Orders: <span id="order"></span></div>
+                    <div class="card-footer d-flex">
+                        @Html.ActionLink("Products", "Product", "Store", new { area = "Admin" }, new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-info text-white h-100">
+                    <div class="card-body py-5">Clear Cache</div>
+                    <div class="card-footer d-flex">
+                        @Html.ActionLink("Clear Cache", "ClearCache", "Dashboard", new { area = "Admin" }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <canvas id="myChart" style="max-width: 700px;"></canvas>
+            </div>
+            <div class="col-md-6">
+                <canvas id="myChart2" style="max-width: 700px;"></canvas>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <ul class="list-group">
-            <li class="list-group-item"><b>System</b></li>
-            <li class="list-group-item"><span class="badge" id="user"></span>@Html.ActionLink("Clear Cache", "ClearCache", "Dashboard", new { area = "Admin" }, new { @class = "btn btn-primary"})</li>
-        </ul>        
-    </div>
-    <div class="col-md-4"></div>
-</div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
 @section Scripts
 {
     <script>
@@ -97,5 +163,75 @@
                 }
             });
         }
+
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        var ctx2 = document.getElementById("myChart2").getContext('2d');
+        var myChart = new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Red',
+                    'Blue',
+                    'Yellow'
+                ],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
     </script>
 }
+
+
