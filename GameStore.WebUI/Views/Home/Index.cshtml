@@ -9,13 +9,137 @@
     .carousel-item {
         display: flex;
     }
+
     .banner_img {
         margin-top: 50px;
-        border-radius:10px;
+        border-radius: 10px;
     }
 
-    
+
+    .flip-card {
+        position: relative;
+        display: inline-flex;
+        flex-direction: column;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .2);
+        border-radius: .1em;
+    }
+
+        .top,
+        .bottom,
+        .flip-card .top-flip,
+        .flip-card .bottom-flip {
+            height: .75em;
+            line-height: 1;
+            padding: .25em;
+            overflow: hidden;
+        }
+
+        .top,
+        .flip-card .top-flip {
+            background-color: #f7f7f7;
+            border-top-right-radius: .1em;
+            border-top-left-radius: .1em;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .bottom,
+        .flip-card .bottom-flip {
+            background-color: white;
+            display: flex;
+            align-items: flex-end;
+            border-bottom-right-radius: .1em;
+            border-bottom-left-radius: .1em;
+        }
+
+        .flip-card .top-flip {
+            position: absolute;
+            width: 100%;
+            animation: flip-top 250ms ease-in;
+            transform-origin: bottom;
+        }
+
+    @@keyframes flip-top {
+        100% {
+            transform: rotateX(90deg);
+        }
+    }
+
+    .flip-card .bottom-flip {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        animation: flip-bottom 250ms ease-out 250ms;
+        transform-origin: top;
+        transform: rotateX(90deg);
+    }
+
+    @@keyframes flip-bottom {
+        100% {
+            transform: rotateX(0deg);
+        }
+    }
+
+    .countdown-timer {
+        display: flex;
+        gap: .5em;
+        justify-content: center;
+        color: white;
+    }
+
+    .container-segment {
+        display: flex;
+        flex-direction: column;
+        gap: .1em;
+        align-items: center;
+        margin: 0 4rem;
+        color: black;
+    }
+
+    .segment {
+        display: flex;
+        gap: .1em;
+        font-size: 5rem;
+    }
+
+    .segment-title {
+        font-size: 4rem;
+    }
+
+    @@media screen and (max-width: 995px) {
+        .countdown-timer {
+            flex-direction: column;
+        }
+    }
+
+    /*css for card flex*/
+    .card-wrapper {
+        display: flex;
+        background-color: white;
+    }
+    .card-item {
+        flex: 1;
+        margin: 0 10px;
+        transition: 0.5s;
+    }
+    .card-bg {
+        position: relative;
+        width: 100%;
+        height: 500px;
+    }
+
+    .card-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .flex-active {
+        flex: 6;
+    }
 </style>
+
 
 <div class="jumbotron" style="height: 60vh; background-image: linear-gradient(to right, #c0faf1, #97f7e8); font-family: Roboto;">
     <div class="container">
@@ -23,7 +147,7 @@
             <div class="col-md-6" style=" margin-top: 50px;">
                 <h1>Game Store</h1>
                 <p>Welcome to the amazing game world!</p>
-                
+
             </div>
             <div class="col-md-6">
                 <img class="banner_img" src="~/images/garen.jpg" alt="Garen" width="100%" height="100%" />
@@ -44,6 +168,36 @@
         </div>
     </div>
 
+</div>
+
+<div class="container" style="padding-right: 60px">
+    <div class="row">
+        <div class="col-12">
+            <div class="card-wrapper">
+                <div class="card-item flex-active">
+                    <div class="card-bg" onclick="onFlexCard(this)">
+                        <img src="~/images/FO4.png" alt="Fifa Online 4" class="card-img" />
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-bg" onclick="onFlexCard(this)">
+                        <img src="~/images/need_for_speed.jpg" alt="Need For Speed" class="card-img" />
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-bg" onclick="onFlexCard(this)">
+                        <img src="~/images/LOL.jpg" alt="League of Legends" class="card-img" />
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-bg" onclick="onFlexCard(this)">
+                        <img src="~/images/call_of_duty.jpg" alt="Call of Duty" class="card-img" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 <h3 class="text-center text-uppercase" style="font-size: 3rem; color: red;">Sale off for Christmas Day</h3>
@@ -103,6 +257,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <h3 style="font-size: 3rem; color: red;">Game news</h3>
@@ -174,7 +329,7 @@
     </div>
 </div>
 
-@Styles.Render("~/css/home.css")
+@*@Styles.Render("~/css/home.css")*@
 
 <script>
     $('.carousel').carousel({
@@ -234,6 +389,17 @@
             bottomFlip.remove()
         })
         flipCard.append(topFlip, bottomFlip)
+    }
+
+    /* js for card flex */
+    const allItemCard = document.querySelectorAll('.card-bg');
+    
+    function onFlexCard(itemActive) {
+        console.log(itemActive);
+        allItemCard.forEach(i => {
+            i.parentElement.classList.remove('flex-active');
+        })
+        itemActive.parentElement.classList.add('flex-active');
     }
 </script>
 
