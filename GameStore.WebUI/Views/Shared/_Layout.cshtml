@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Rong's Game Store</title>
+    <title>@ViewBag.Title - Game Store</title>
     <link rel="icon" type="image/x-icon" href="~/images/favorite.ico">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     @Scripts.Render("~/bundles/jquery")
@@ -51,12 +51,14 @@
         </div>
     </div>
     <div class="container">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Rong's Game Store</p>
+        <div class="col-sm-12">
+            @RenderBody()
+        </div>
+        <footer class="text-primary text-center clear" style="display: block;">
+            <p><b><i>&copy; @DateTime.Now.Year - Game Store</i></b></p>
         </footer>
     </div>
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>

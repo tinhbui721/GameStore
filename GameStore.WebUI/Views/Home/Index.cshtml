@@ -3,33 +3,161 @@
 }
 
 @Html.Partial("_FrontPartial")
-@Styles.Render("~/css/home.css")
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
-<div class="jumbotron">
-    <h1>Game Store</h1>
-    <p>Welcome to Johnny's Game Store! You can purchase consoles, accessories and games here. You can register as 'Regular' user to purchase products. Or, register as 'Advanced' user to sell your own products!</p>
-    <div class="row">
-        <div class="col-sm-2">@Html.ActionLink("Console", "Console", "Product")</div>
-        <div class="col-sm-2">@Html.ActionLink("Accessory", "Accessory", "Product")</div>
-        <div class="col-sm-2">@Html.ActionLink("Game", "Game", "Product")</div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-4"></div>
+<style>
+    .carousel-item {
+        display: flex;
+    }
+
+    .banner_img {
+        margin-top: 50px;
+        border-radius: 10px;
+    }
+
+
+    .flip-card {
+        position: relative;
+        display: inline-flex;
+        flex-direction: column;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .2);
+        border-radius: .1em;
+    }
+
+        .top,
+        .bottom,
+        .flip-card .top-flip,
+        .flip-card .bottom-flip {
+            height: .75em;
+            line-height: 1;
+            padding: .25em;
+            overflow: hidden;
+        }
+
+        .top,
+        .flip-card .top-flip {
+            background-color: #f7f7f7;
+            border-top-right-radius: .1em;
+            border-top-left-radius: .1em;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .bottom,
+        .flip-card .bottom-flip {
+            background-color: white;
+            display: flex;
+            align-items: flex-end;
+            border-bottom-right-radius: .1em;
+            border-bottom-left-radius: .1em;
+        }
+
+        .flip-card .top-flip {
+            position: absolute;
+            width: 100%;
+            animation: flip-top 250ms ease-in;
+            transform-origin: bottom;
+        }
+
+    @@keyframes flip-top {
+        100% {
+            transform: rotateX(90deg);
+        }
+    }
+
+    .flip-card .bottom-flip {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        animation: flip-bottom 250ms ease-out 250ms;
+        transform-origin: top;
+        transform: rotateX(90deg);
+    }
+
+    @@keyframes flip-bottom {
+        100% {
+            transform: rotateX(0deg);
+        }
+    }
+
+    .countdown-timer {
+        display: flex;
+        gap: .5em;
+        justify-content: center;
+        color: white;
+    }
+
+    .container-segment {
+        display: flex;
+        flex-direction: column;
+        gap: .1em;
+        align-items: center;
+        margin: 0 4rem;
+        color: black;
+    }
+
+    .segment {
+        display: flex;
+        gap: .1em;
+        font-size: 5rem;
+    }
+
+    .segment-title {
+        font-size: 4rem;
+    }
+
+    @@media screen and (max-width: 995px) {
+        .countdown-timer {
+            flex-direction: column;
+        }
+    }
+
+    /*css for card flex*/
+    .card-wrapper {
+        display: flex;
+        background-color: white;
+    }
+    .card-item {
+        flex: 1;
+        margin: 0 10px;
+        transition: 0.5s;
+    }
+    .card-bg {
+        position: relative;
+        width: 100%;
+        height: 500px;
+    }
+
+    .card-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .flex-active {
+        flex: 6;
+    }
+</style>
+
+
+<div class="jumbotron" style="height: 60vh; background-image: linear-gradient(to right, #c0faf1, #97f7e8); font-family: Roboto;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style=" margin-top: 50px;">
+                <h1>Game Store</h1>
+                <p>Welcome to the amazing game world!</p>
+
+            </div>
+            <div class="col-md-6">
+                <img class="banner_img" src="~/images/garen.jpg" alt="Garen" width="100%" height="100%" />
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="panel-group">
-    <div class="panel panel-primary">
-        <div class="panel-body">Default User Account</div>
-    </div>
-    <div class="panel panel-default">
-        <ul class="list-group">
-            <li class="list-group-item">admin@gamestore.com / admin</li>
-            <li class="list-group-item">advanced@gamestore.com / advanced</li>
-            <li class="list-group-item">regular@gamestore.com / regular</li>
-        </ul>
-    </div>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="item active">
                 <img class="d-block" src="~/images/sliders/banner2.jpg" alt="First slide">
@@ -37,70 +165,171 @@
             <div class="item">
                 <img class="d-block" src="~/images/sliders/banner3.jpg" alt="Second slide">
             </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container" style="padding-right: 60px">
+    <div class="row">
+        <div class="col-12">
+            <div class="card-wrapper">
+                <div class="card-item flex-active">
+                    <div class="card-bg" onclick="onFlexCard(this)">
+                        <img src="~/images/FO4.png" alt="Fifa Online 4" class="card-img" />
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-bg" onclick="onFlexCard(this)">
+                        <img src="~/images/need_for_speed.jpg" alt="Need For Speed" class="card-img" />
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-bg" onclick="onFlexCard(this)">
+                        <img src="~/images/LOL.jpg" alt="League of Legends" class="card-img" />
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="card-bg" onclick="onFlexCard(this)">
+                        <img src="~/images/call_of_duty.jpg" alt="Call of Duty" class="card-img" />
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
 </div>
 
-<hr />
-<h3>Sale off for Christmas Day</h3>
-<div class="countdown-timer">
-    <div class="container-segment">
-        <div class="segment-title">Days</div>
-        <div class="segment">
-            <div class="flip-card" data-days-tens>
-                <div class="top">2</div>
-                <div class="bottom">2</div>
+<h3 class="text-center text-uppercase" style="font-size: 3rem; color: red;">Sale off for Christmas Day</h3>
+<div class="jumbotron" style="background-color: #f01f31">
+
+    <div class="countdown-timer">
+        <div class="container-segment">
+            <div class="segment-title">Days</div>
+            <div class="segment">
+                <div class="flip-card" data-days-tens>
+                    <div class="top">2</div>
+                    <div class="bottom">2</div>
+                </div>
+                <div class="flip-card" data-days-ones>
+                    <div class="top">4</div>
+                    <div class="bottom">4</div>
+                </div>
             </div>
-            <div class="flip-card" data-days-ones>
-                <div class="top">4</div>
-                <div class="bottom">4</div>
+        </div>
+        <div class="container-segment">
+            <div class="segment-title">Hours</div>
+            <div class="segment">
+                <div class="flip-card" data-hours-tens>
+                    <div class="top">2</div>
+                    <div class="bottom">2</div>
+                </div>
+                <div class="flip-card" data-hours-ones>
+                    <div class="top">4</div>
+                    <div class="bottom">4</div>
+                </div>
+            </div>
+        </div>
+        <div class="container-segment">
+            <div class="segment-title">Minutes</div>
+            <div class="segment">
+                <div class="flip-card" data-minutes-tens>
+                    <div class="top">0</div>
+                    <div class="bottom">0</div>
+                </div>
+                <div class="flip-card" data-minutes-ones>
+                    <div class="top">0</div>
+                    <div class="bottom">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="container-segment">
+            <div class="segment-title">Seconds</div>
+            <div class="segment">
+                <div class="flip-card" data-seconds-tens>
+                    <div class="top">0</div>
+                    <div class="bottom">0</div>
+                </div>
+                <div class="flip-card" data-seconds-ones>
+                    <div class="top">0</div>
+                    <div class="bottom">0</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container-segment">
-        <div class="segment-title">Hours</div>
-        <div class="segment">
-            <div class="flip-card" data-hours-tens>
-                <div class="top">2</div>
-                <div class="bottom">2</div>
+</div>
+
+<h3 style="font-size: 3rem; color: red;">Game news</h3>
+<div class="jumbotron">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active row">
+                <div class="card col-md-4">
+                    <img src="~/images/GameNews/GameNew_1.jpg" class="card-img-top" width="100%">
+                    <div class="card-body">
+                        <h5 class="card-title">20/11/2022</h5>
+                        <p class="card-text">“Cậu cả” 16 tuổi quẩy nát cả giải Street Fighter UFA rồi bước xuống sàn đấu như chưa từng có cuộc đồ sát</p>
+                        <a href="https://gvn360.com/tin-game/cau-ca-16-tuoi-quay-nat-ca-giai-street-fighter-ufa-roi-buoc-xuong-san-dau-nhu-chua-tung-co-cuoc-do-sat/" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+                <div class="card col-md-4">
+                    <img src="~/images/GameNews/pokemon-1024x576.jpg" class="card-img-top" alt="..." width="100%">
+                    <div class="card-body">
+                        <h5 class="card-title">20/11/2022</h5>
+                        <p class="card-text">Cảnh sát gian manh bị đá khỏi ngành vì giở thủ đoạn chôm mớ thẻ bài Pokémon trị giá 400 đô</p>
+                        <a href="https://gvn360.com/tin-game/canh-sat-gian-manh-bi-da-khoi-nganh-vi-tim-cach-chom-mo-the-pokemon-tri-gia-400-do/" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+                <div class="card col-md-4">
+                    <img src="~/images/GameNews/evil-dead-mission-six-1024x576.jpg" class="card-img-top" alt="..." width="100%">
+                    <div class="card-body">
+                        <h5 class="card-title">18/11/2022</h5>
+                        <p class="card-text">Evil Dead: The Game và Dark Deity đang miễn phí trên Epic, mời bạn cùng đồng đội chống những thế lực yêu ma</p>
+                        <a href="https://gvn360.com/tin-game/evil-dead-the-game-va-dark-deity-dang-mien-phi-moi-ban-cung-dong-doi-chong-nhung-the-luc-yeu-ma/" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+
             </div>
-            <div class="flip-card" data-hours-ones>
-                <div class="top">4</div>
-                <div class="bottom">4</div>
+            <div class="item row">
+                <div class="card col-md-4">
+                    <img src="~/images/GameNews/Khung-1-9-1024x576.jpg" class="card-img-top" alt="..." width="100%">
+                    <div class="card-body">
+                        <h5 class="card-title">17/11/2022</h5>
+                        <p class="card-text">Top 10 tựa game indie có thế giới choáng ngợp nhất</p>
+                        <a href="https://gvn360.com/tin-game/top-game/top-10-tua-game-indie-co-the-gioi-choang-ngop-nhat/" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+                <div class="card col-md-4">
+                    <img src="~/images/GameNews/maxresdefault-17-1024x576.jpg" class="card-img-top" alt="..." width="100%">
+                    <div class="card-body">
+                        <h5 class="card-title">17/11/2022</h5>
+                        <p class="card-text">Ngai vàng lật đổ, MrBeast phá kỷ lục Pewdiepie trở thành người nổi tiếng nhất Youtube</p>
+                        <a href="https://gvn360.com/tin-game/ngai-vang-lat-do-mrbeast-pha-ky-luc-pewdiepie-tro-thanh-nguoi-noi-tieng-nhat-youtube/" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+                <div class="card col-md-4">
+                    <img src="~/images/GameNews/bf68468c06a24614857295a4936c27b3-1024x576.jpg" class="card-img-top" alt="..." width="100%">
+                    <div class="card-body">
+                        <h5 class="card-title">16/11/2022</h5>
+                        <p class="card-text">Resident Evil được fan remake siêu đẹp đã có bản demo miễn phí, mời bạn tải về</p>
+                        <a href="https://gvn360.com/tin-game/resident-evil-duoc-fan-remake-sieu-dep-da-co-ban-demo-mien-phi-moi-ban-tai-ve/" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container-segment">
-        <div class="segment-title">Minutes</div>
-        <div class="segment">
-            <div class="flip-card" data-minutes-tens>
-                <div class="top">0</div>
-                <div class="bottom">0</div>
-            </div>
-            <div class="flip-card" data-minutes-ones>
-                <div class="top">0</div>
-                <div class="bottom">0</div>
-            </div>
-        </div>
-    </div>
-    <div class="container-segment">
-        <div class="segment-title">Seconds</div>
-        <div class="segment">
-            <div class="flip-card" data-seconds-tens>
-                <div class="top">0</div>
-                <div class="bottom">0</div>
-            </div>
-            <div class="flip-card" data-seconds-ones>
-                <div class="top">0</div>
-                <div class="bottom">0</div>
-            </div>
-        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 </div>
 
-@Styles.Render("~/css/home.css")
+@*@Styles.Render("~/css/home.css")*@
 
 <script>
     $('.carousel').carousel({
@@ -160,6 +389,17 @@
             bottomFlip.remove()
         })
         flipCard.append(topFlip, bottomFlip)
+    }
+
+    /* js for card flex */
+    const allItemCard = document.querySelectorAll('.card-bg');
+    
+    function onFlexCard(itemActive) {
+        console.log(itemActive);
+        allItemCard.forEach(i => {
+            i.parentElement.classList.remove('flex-active');
+        })
+        itemActive.parentElement.classList.add('flex-active');
     }
 </script>
 
