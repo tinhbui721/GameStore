@@ -16,6 +16,7 @@ namespace GameStore.WebUI.Controllers
     public class ShoppingCartController : Controller
     {
         // GET: ShoppingCart
+        [AllowAnonymous]
         public ActionResult Index()
         {
             ShoppingCart cart = (ShoppingCart)Session["ShoppingCart"];
@@ -27,7 +28,7 @@ namespace GameStore.WebUI.Controllers
             return View(cart);
         }
 
-
+        [AllowAnonymous]
         public ActionResult CreateOrUpdate(CartViewModel value)
         {
             ShoppingCart cart = (ShoppingCart)Session["ShoppingCart"];
@@ -56,18 +57,20 @@ namespace GameStore.WebUI.Controllers
             return View("Index", cart);
         }
 
+        [AllowAnonymous]
         public ActionResult Checkout()
         {
             CheckoutViewModel checkout = new CheckoutViewModel();
-            checkout.FullName = "Rong Zhuang";
-            checkout.Address = "1st Jackson Ave,Chicago,IL";
-            checkout.City = "Chicago";
-            checkout.State = "IL";
-            checkout.Zip = "60606";
+            checkout.FullName = "";
+            checkout.Address = "";
+            checkout.City = "";
+            checkout.State = "";
+            checkout.Zip = "";
             ViewBag.States = State.List();
             return View(checkout);
         }
-
+        
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult PlaceOrder(CheckoutViewModel value)
         {
@@ -120,7 +123,7 @@ namespace GameStore.WebUI.Controllers
                         newOrder.Zip = value.Zip;
                         newOrder.DeliveryDate = DateTime.Now.AddDays(14);
                         newOrder.ConfirmationNumber = DateTime.Now.ToString("yyyyMMddHHmmss");
-                        newOrder.UserId = User.Identity.GetUserId();
+                        newOrder.UserId = User.Identity.GetUserId() != null ? User.Identity.GetUserId() : "705fccac-c0c6-4d85-b8df-775e7c722129";
                         context.Orders.Add(newOrder);
                         cart.GetItems().ForEach(c => context.OrderItems.Add(new OrderItem { OrderId = newOrder.OrderId, ProductId = c.GetItemId(), Quantity = c.Quantity }));
                         context.SaveChanges();

@@ -42,7 +42,7 @@
                     }
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
     <div class="col-sm-6">
         <div class="panel-group">
@@ -84,7 +84,7 @@
                     }
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
 </div>
 
@@ -92,7 +92,7 @@
 <table class="table table-striped" id="modelList">
     <thead>
         <tr>
-            <th>Product Id</th>
+            <th>Image</th>
             <th>Product Name</th>
             <th>Price</th>
             <th>Quantity</th>
@@ -103,7 +103,9 @@
         @foreach (var item in Model.Items)
         {
             <tr>
-                <td>@item.ProductId</td>
+                <td>
+                    <img src="~/images/@item.Image" height="50" alt="Image">
+                </td>
                 <td>@item.ProductName</td>
                 <td>@Html.FormattedCurrency(item.GetDiscountedPrice())</td>
                 <td>@item.Quantity</td>
