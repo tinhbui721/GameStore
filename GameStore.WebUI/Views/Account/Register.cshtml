@@ -39,16 +39,36 @@
 	<!-- Main Content -->
 	<div class="main">
 		<div class="main-w3l">
-			<h1 class="logo-w3">Game Store</h1>
-			<div class="w3layouts-main">
-				<h2><span>Register</span></h2>
+            <div class="w3layouts-main">
                 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder= "Email", @type="email" })
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder= "Password", @id= "password1", @type="email"})
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder= "Confirm Password", @id= "password2", @type="email" })
-                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder= "User Name", @type="email" })
+                    <hr />
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                        </div>
+                    </div>
                     <div class="form-group">
                         @Html.LabelFor(m => m.Membership, new { @class = "col-md-2 control-label" })
                         <div class="col-md-10">
@@ -64,10 +84,14 @@
                             </div>
                         </div>
                     </div>
-					<input type="submit" value="Register" name="register">
-
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn btn-success" value="Register" />
+                        </div>
+                    </div>
                 }
-			</div>
+
+            </div>
 			<!-- //main -->
 			
 			<!-- password-script -->

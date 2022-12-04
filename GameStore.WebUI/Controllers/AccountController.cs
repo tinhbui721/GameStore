@@ -15,11 +15,15 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Owin.Security.DataProtection;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GameStore.WebUI.Controllers
 {
+
     public class AccountController : BaseController
     {
+        public string codeTemp;
         //
         // GET: /Account/Register
         [AllowAnonymous]
@@ -47,52 +51,21 @@ namespace GameStore.WebUI.Controllers
                     ModelState.AddModelError("", "The User Name you specified is already existing! Please try with another user name!");
                     return View(model);
                 }
-                //Session["Register"] = model;
-                ////Assign the values for the properties we need to pass to the service
-                //String AppId = ConfigurationHelper.GetAppId();
-                //String SharedKey = ConfigurationHelper.GetSharedKey();
-                //String AppTransId = "20";
-                //String AppTransAmount = "";
-                //if (model.Membership.Equals("Regular"))
-                //{
-                //    AppTransAmount = "49.99";
-                //}
-                //else
-                //{
-                //    AppTransAmount = "99.99";
-                //}
-
-                //// Hash the values so the server can verify the values are original
-                //String hash = HttpUtility.UrlEncode(CreditAuthorizationClient.GenerateClientRequestHash(SharedKey, AppId, AppTransId, AppTransAmount));
-
-                ////Create the URL and  concatenate  the Query String values
-                //String url = "http://ectweb2.cs.depaul.edu/ECTCreditGateway/Authorize.aspx";
-                //url = url + "?AppId=" + AppId;
-                //url = url + "&TransId=" + AppTransId;
-                //url = url + "&AppTransAmount=" + AppTransAmount;
-                //url = url + "&AppHash=" + hash;
-
-                //return Redirect(url);
-                //RegisterViewModel model = (RegisterViewModel)Session["Register"];
                 if (model != null)
                 {
-                    user = new AppUser { Email = model.Email, UserName = model.UserName, Membership = model.Membership };
+                    user = new AppUser { Email = model.Email, UserName = model.UserName, Membership = model.Membership, EmailConfirmed = false };
                     var result = UserManager.CreateAsync(user, model.Password);
                     if (result.Result.Succeeded)
                     {
                         var newUser = UserManager.FindByEmail(model.Email);
-                        var identity = UserManager.CreateIdentityAsync(newUser, DefaultAuthenticationTypes.ApplicationCookie).Result;
-                        AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, identity);
+                        var provider = new DpapiDataProtectionProvider("GameStore.WebUI");
+                        UserManager.UserTokenProvider = new DataProtectorTokenProvider<AppUser>(provider.Create("Confirmation"));
+                        string code = UserManager.GenerateEmailConfirmationToken(newUser.Id);
+                        codeTemp = code;
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = newUser.Id, code = code }, protocol: Request.Url.Scheme);
 
-                        System.Web.HttpContext.Current.Cache.Remove("UserList");
-                        Session["Register"] = null;
-                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                        // Send an email with this link
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                        return RedirectToAction("Index", "Home");
+                        SendMail.SendEMail(user.Email, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        return View("NotificationConfirmEmail");
                     }
                     else
                     {
@@ -100,9 +73,39 @@ namespace GameStore.WebUI.Controllers
                     }
                 }
             }
-
-            // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ResendConfirm(RegisterViewModel model)
+        {
+            var newUser = UserManager.FindByEmail(model.Email);
+            var provider = new DpapiDataProtectionProvider("GameStore.WebUI");
+            UserManager.UserTokenProvider = new DataProtectorTokenProvider<AppUser>(provider.Create("Confirmation"));
+            string code = UserManager.GenerateEmailConfirmationToken(newUser.Id);
+            codeTemp = code;
+            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = newUser.Id, code = code }, protocol: Request.Url.Scheme);
+            SendMail.SendEMail(newUser.Email, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+            return View("NotificationConfirmEmail");
+        }
+
+        [AllowAnonymous]
+        public ActionResult ConfirmEmail(string userId, string code)
+        {
+            if (userId != null || code == codeTemp)
+            {
+                AppUser appUser = UserManager.FindById(userId);
+                appUser.EmailConfirmed = true;
+                UserManager.Update(appUser);
+                ViewBag.message = "Xác thực email thành công";
+                return View("ConfirmEmail");
+            }
+            else
+            {
+                ViewBag.message = "Xác thực email không thành công";
+                return View("ConfirmEmail");
+            }
         }
 
         [AllowAnonymous]
@@ -144,9 +147,10 @@ namespace GameStore.WebUI.Controllers
                         Session["Register"] = null;
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                        //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
 
                         return RedirectToAction("Index", "Home");
                     }
@@ -193,10 +197,18 @@ namespace GameStore.WebUI.Controllers
                         var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                         AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, identity);
                         GetOrderCount(user.Id);
-                        if (!String.IsNullOrEmpty(returnUrl))
-                            return RedirectToLocal(returnUrl);
+                        if (!user.EmailConfirmed)
+                        {
+                            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                            return View("NotificationConfirmEmail");
+                        }
                         else
-                            return RedirectToAction("Index", "Home");
+                        {
+                            if (!String.IsNullOrEmpty(returnUrl))
+                                return RedirectToLocal(returnUrl);
+                            else
+                                return RedirectToAction("Index", "Home");
+                        }
                     }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
