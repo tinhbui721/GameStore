@@ -21,7 +21,6 @@ namespace GameStore.Domain.Identity
         }
 
         public virtual string Membership { get; set; }
-
         public ICollection<AppRole> UserRoles { get; set; }
     }
 
