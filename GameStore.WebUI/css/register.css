@@ -12,6 +12,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     display: block;
 }
 
+label {
+    color: white;   
+}
+
 ol, ul {
     list-style: none;
     margin: 0px;
@@ -162,6 +166,10 @@ h1.logo-w3 {
 
 .w3layouts-main {
     padding: 40px 30px;
+}
+
+input {
+    max-width: 100%;
 }
 
 input[type="text"], input[type="email"], input[type="password"] {

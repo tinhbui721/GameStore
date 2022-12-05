@@ -5,6 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Game Store</title>
+    <link href="../../css/footer.css" rel="stylesheet" type="text/css" media="all" />
+    <link href='//fonts.googleapis.com/css?family=Khand:400,300,500,600,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,500,700,900,400italic' rel='stylesheet' type='text/css'>   
     <link rel="icon" type="image/x-icon" href="~/images/favorite.ico">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     @Scripts.Render("~/bundles/jquery")
@@ -54,10 +57,82 @@
         <div class="col-sm-12">
             @RenderBody()
         </div>
-        <footer class="text-primary text-center clear" style="display: block;">
-            <p><b><i>&copy; @DateTime.Now.Year - Game Store</i></b></p>
-        </footer>
     </div>
+    <footer class="text-primary text-center clear" style="display: block;">
+            <!-- <p><b><i>&copy; @DateTime.Now.Year - Game Store</i></b></p> -->
+            <!-- footer -->
+            <div class="footer">
+                <div class="footer-row">
+                    <div class="footer-row-info">
+                        <div class="w3ls-grids grid-one">
+                            <h3>GIỚI THIỆU</h3>
+                            <p class="w3l-text">Game Store là hệ thống bán lẻ chính hãng các sản phẩm công nghệ cao cấp: máy chơi game, điện thoại, máy tính bảng, laptop, đồ chơi kĩ thuật số.</p>
+                            <p>Địa chỉ: KTX Khu A - Khu phố 6, Phường Linh Trung, Thành phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam </p>
+                            <p>Điện thoại: 0339876802</p>
+                            <p>Email: 19522370@gm.uit.edu.nn</p>
+                        </div>
+                        <div class="w3ls-grids grid-two">
+                            <h3>THỜI GIAN LÀM VIỆC</h3>
+                            <div class="agile-body">
+                                <div class="agile-left">
+                                    <img src="../../images/img1.png" alt="">
+                                </div>
+                                <div class="agile-right">
+                                    <h5>Hệ thống cửa hàng:</h5>
+                                    <ul>
+                                        <li><span class=" "></span>Các ngày trong tuần (T2 - T7): 9h - 21h</li> 
+                                        <li><span class=" "></span>Chủ nhật và ngày lễ: 9h - 19h</li> 
+                                    </ul>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="agile-body agile-body-bottom">
+                                <div class="agile-left">
+                                    <img src="../../images/img2.png" alt="">
+                                </div>
+                                <div class="agile-right">
+                                    <h5>Bảo hành sửa chữa:</h5>
+                                    <ul>
+                                        <li><span class=" "></span>Các ngày trong tuần (T2 - T7): 9h - 20h</li> 
+                                        <li><span class=" "></span>Chủ nhật và ngày lễ: 9h - 19h</li> 
+                                    </ul>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="w3ls-grids grid-three">
+                            <h3>Support</h3>
+                            <ul>
+                                <li><a href="#"><i></i>Quy định chung</a></li>
+                                <li><a href="#"><i></i>Quy định đặt cọc</a></li>
+                                <li><a href="#"><i></i>Quy định bảo hành</a></li>
+                                <li><a href="#"><i></i>Chính sách vận chuyển</a></li>
+                                <li><a href="#"><i></i>Chính sách đổi / trả hàng</a></li>
+                                <li><a href="#"><i></i>Tuyển dụng</a></li>
+                            </ul>
+                        </div>
+                        <div class="w3ls-grids grid-four">
+                            <h3>Tìm kiếm</h3>
+                            <form action="#" method="post">
+                                <input type="search" name="Search" placeholder="Nhập từ khóa tìm kiếm..." id="search" required="">
+                                <input type="submit" value="">
+                            </form>
+                            <div class="agileits-bottom-grids social-icons">
+                                <h2>Kết nối với chúng tôi</h2>
+                                <ul>
+                                    <li><a href="#"> </a></li>
+                                    <li><a href="#" class="fb"> </a></li>
+                                    <li><a href="#" class="gp"> </a></li>
+                                    <li><a href="#" class="drb"> </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+                </div>	
+            </div>	
+        </footer>
+            <!-- //footer -->	
     
     @RenderSection("scripts", required: false)
 </body>
