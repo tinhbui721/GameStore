@@ -94,8 +94,6 @@ namespace GameStore.WebUI.Controllers
 
             using (GameStoreDBContext context = new GameStoreDBContext())
             {
-                //var query = "Select * from Products where ProductName = '" + productname + "'";
-                //list = context.Database.SqlQuery<ProductDTO>(query).ToList();
                 if (String.IsNullOrEmpty(productname))
                 {
                     var query = from product in context.Products

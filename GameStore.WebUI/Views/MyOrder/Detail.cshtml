@@ -1,5 +1,4 @@
-﻿
-@using (Html.BeginForm("PlaceOrder", "ShoppingCart", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+﻿@using (Html.BeginForm("PlaceOrder", "ShoppingCart", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     <div class="form-group">
         @Html.LabelFor(o => o.UserId, new { @class = "col-md-2 control-label" })

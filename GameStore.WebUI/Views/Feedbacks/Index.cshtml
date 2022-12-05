@@ -5,10 +5,6 @@
 }
 
 <h2>Danh sách các phản hồi</h2>
-
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
 <table class="table">
     <tr>
         <th>
@@ -35,8 +31,6 @@
             @Html.DisplayFor(modelItem => item.DateFeedback)
         </td>
         <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.IdFeedback }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdFeedback }) |*@
             @Html.ActionLink("Xóa", "Delete", new { id=item.IdFeedback })
         </td>
     </tr>
