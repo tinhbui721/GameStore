@@ -23,7 +23,9 @@ namespace GameStore.WebUI.Controllers
 
     public class AccountController : BaseController
     {
-        public string codeTemp;
+        public static string codeTemp;
+        public static string passWord;
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
@@ -55,6 +57,7 @@ namespace GameStore.WebUI.Controllers
                 {
                     user = new AppUser { Email = model.Email, UserName = model.UserName, Membership = model.Membership, EmailConfirmed = false };
                     var result = UserManager.CreateAsync(user, model.Password);
+                    passWord = model.Password;
                     if (result.Result.Succeeded)
                     {
                         var newUser = UserManager.FindByEmail(model.Email);
@@ -91,15 +94,19 @@ namespace GameStore.WebUI.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult ConfirmEmail(string userId, string code)
+        public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            if (userId != null || code == codeTemp)
+            if (userId != null && code == codeTemp)
             {
                 AppUser appUser = UserManager.FindById(userId);
                 appUser.EmailConfirmed = true;
                 UserManager.Update(appUser);
-                ViewBag.message = "Xác thực email thành công";
-                return View("ConfirmEmail");
+                LoginViewModel loginViewModel = new LoginViewModel();
+                loginViewModel.Email = appUser.Email;
+                loginViewModel.Password = passWord;
+                return await Login(loginViewModel, null);
+                //ViewBag.message = "Xác thực email thành công";
+                //return View("ConfirmEmail");
             }
             else
             {
