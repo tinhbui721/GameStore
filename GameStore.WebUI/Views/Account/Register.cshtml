@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Register for Game Store</title>
- 
-	<!-- Meta-Tags -->
+    <title>Register for Game Store</title>
+
+    <!-- Meta-Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <meta name="keywords" content="Space Register Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
@@ -24,78 +24,49 @@
         }
     </script>
     <!-- //Meta-Tags -->
-
-	<!-- css files -->
-	<link href="../../css/register.css" rel="stylesheet" type="text/css" media="all" />
-	<!-- css files -->
-
-	<!-- Online-fonts -->
-	<link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,vietnamese" rel="stylesheet">
-	<!-- //Online-fonts -->
+    <!-- css files -->
+    <link href="../../css/register.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- css files -->
+    <!-- Online-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,vietnamese" rel="stylesheet">
+    <!-- //Online-fonts -->
 
 </head>
 <body>
 
-	<!-- Main Content -->
-	<div class="main">
-		<div class="main-w3l">
+    <!-- Main Content -->
+    <div class="main">
+        <div class="main-w3l">
+            <h1 class="logo-w3">Game Store</h1>
             <div class="w3layouts-main">
+                <h2><span>Register</span></h2>
                 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <hr />
                     @Html.ValidationSummary("", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", @type = "email" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @id = "password1", @type = "password" })
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password", @id = "password2", @type = "password" })
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "User Name", @type = "text" })
+                    <div class="form-group" style="color: white">
+                        @Html.LabelFor(m => m.Membership)
+                        <div>
+                            <label style="color: white">
+                                @Html.RadioButton("Membership", "Regular", true)
+                                Regular
+                            </label>
+                            <label style="color: white">
+                                @Html.RadioButton("Membership", "Advanced", false)
+                                Advanced
+                            </label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Membership, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            <div class="radio">
-                                <label>
-                                    @Html.RadioButton("Membership", "Regular", true)
-                                    Regular
-                                </label>
-                                <label>
-                                    @Html.RadioButton("Membership", "Advanced", false)
-                                    Advanced
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" class="btn btn-success" value="Register" />
-                        </div>
-                    </div>
+                    <input type="submit" value="Register" name="register">
                 }
-
             </div>
-			<!-- //main -->
-			
-			<!-- password-script -->
-			<script>
+            <!-- //main -->
+            <!-- password-script -->
+            <script>
 				window.onload = function () {
 					document.getElementById("password1").onchange = validatePassword;
 					document.getElementById("password2").onchange = validatePassword;
@@ -110,12 +81,12 @@
 						document.getElementById("password2").setCustomValidity('');
 					//empty string means no validation error
 				}
-			</script>
-			<!-- //password-script -->
-			
-		</div>
-	</div>
-	<!-- //Main Content -->
+            </script>
+            <!-- //password-script -->
+
+        </div>
+    </div>
+    <!-- //Main Content -->
 
 </body>
 </html>

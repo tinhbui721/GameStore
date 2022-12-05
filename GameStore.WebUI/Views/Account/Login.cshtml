@@ -63,9 +63,10 @@
                         </div>
                     </div>
                     -->
-                    <h6><a href="#">Forgot Password?</a></h6>
-                    <div class="clear"></div>
-                    <span>@Html.CheckBoxFor(m => m.RememberMe)Remember Me</span>
+                    <div class="form-bottom">
+                        <h6><a href="#">Forgot Password?</a></h6>
+                        <span>@Html.CheckBoxFor(m => m.RememberMe)Remember Me</span>
+                    </div>
                     <input type="submit" value="login" name="login">
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
@@ -83,4 +84,3 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-<a href="~/Views/Account/Login.cshtml">~/Views/Account/Login.cshtml</a>
