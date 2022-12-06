@@ -1,5 +1,4 @@
-/* reset */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+/*html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -17,6 +16,7 @@ ol, ul {
     margin: 0px;
     padding: 0px;
 }
+
 .form-bottom {
     display: flex;
     justify-content: center;
@@ -34,109 +34,82 @@ blockquote, q {
 table {
     border-collapse: collapse;
     border-spacing: 0;
-}
+}*/
 /* start editing from here */
-a {
+/*a {
     text-decoration: none;
 }
 
 .txt-rt {
     text-align: right;
-}
+}*/
 /* text align right */
-.txt-lt {
+/*.txt-lt {
     text-align: left;
-}
+}*/
 /* text align left */
-.txt-center {
+/*.txt-center {
     text-align: center;
-}
+}*/
 /* text align center */
-.float-rt {
+/*.float-rt {
     float: right;
-}
+}*/
 /* float right */
-.float-lt {
+/*.float-lt {
     float: left;
-}
+}*/
 /* float left */
-.clear {
+/*.clear {
     clear: both;
-}
+}*/
 /* clear float */
-.pos-relative {
+/*.pos-relative {
     position: relative;
-}
+}*/
 /* Position Relative */
-.pos-absolute {
+/*.pos-absolute {
     position: absolute;
-}
+}*/
 /* Position Absolute */
-.vertical-base {
+/*.vertical-base {
     vertical-align: baseline;
-}
+}*/
 /* vertical align baseline */
-.vertical-top {
+/*.vertical-top {
     vertical-align: top;
-}
+}*/
 /* vertical align top */
-nav.vertical ul li {
+/*nav.vertical ul li {
     display: block;
-}
+}*/
 /* vertical menu */
-nav.horizontal ul li {
+/*nav.horizontal ul li {
     display: inline-block;
-}
+}*/
 /* horizontal menu */
-img {
+/*img {
     max-width: 100%;
-}
+}*/
 /*end reset*/
 
-body p, h1, h2, h3, h4, h5, h6, a {
+/*body p, h1, h2, h3, h4, h5, h6, a {
     font-family: 'Roboto', sans-serif;
 }
 
-body { /*--
-	background:pink;
-	*/
-    background: url('../images/bg.png') no-repeat 62% 34%;
+body {
+    background: url('../images/bg.png') no-repeat center;
     background-size: cover;
+    background-attachment: fixed;
     text-align: center;
-}
+}*/
 /*--header--*/
-.agileheader h1 {
-    font-size: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 10px;
-    color: #ffffff;
-    font-weight: 600;
-    margin: 70px 0px;
-}
 
-.w3layouts-main h2 {
-    color: #fff;
-    font-size: 29px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding-bottom: 15px;
-}
-
-.w3layouts-main {
-    width: 25%;
-    margin: 0 auto;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 42px 35px;
-    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
-}
 /*--//header--*/
 /*--main--*/
-input[type="email"], input[type="password"] {
+/*input[type="email"], input[type="password"] {
     width: 100%;
-    padding: 15px 0px 15px 42px;
+    padding: 15px 0 15px 45px;
     border: 1px solid #fff;
     outline: none;
     font-size: 14px;
@@ -144,6 +117,7 @@ input[type="email"], input[type="password"] {
     margin: 14px 0px;
     font-family: 'Roboto', sans-serif;
     border-radius: 3px;
+    min-width: 100%;
 }
 
 input[type="email"] {
@@ -156,22 +130,13 @@ input[type="password"] {
     background-size: 28px;
 }
 
-.w3layouts-main span {
-    font-size: 16px;
-    color: #fff;
-    float: center;
-    width: 100%;
-    margin-top: 8px;
-    font-family: 'Roboto', sans-serif;
-}
-
 .w3layouts-main h6 {
     font-size: 16px;
-    float: right;
-    width: 37%;
+    display: block;
+    width: 100%;
     color: #fff;
     letter-spacing: 1px;
-    margin-top: 8px;
+    margin-top: 10px;
     text-decoration: underline;
 }
 
@@ -235,24 +200,80 @@ input[type="submit"] {
     font-size: 17px;
     color: #fff;
 }
-/*--//main--*/
 
-/*--responsive--*/
+.w3layouts-main {
+    width: 40%;
+    margin: auto;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px 25px;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+}
+
+    .w3layouts-main h2 {
+        color: #fff;
+        font-size: 29px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        padding-bottom: 15px;
+    }
+
+@media(max-width:1920px) {
+    .main-w3l {
+        width: 100%;
+        margin: auto;
+        padding: 0;
+        text-align: center;
+    }
+
+    .w3layouts-main {
+        width: 40%;
+        text-align: center;
+    }
+}
+
+.w3layouts-main span {
+    font-size: 16px;
+    color: #fff;
+    margin-top: 8px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.w3layouts-main h6 {
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+.agileheader h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    color: #ffffff;
+    font-weight: 600;
+    margin: 70px 0px;
+    border: 1px solid white;
+}
+
 @media(max-width:1440px) {
     .w3layouts-main {
-        width: 28%;
+        width: 100%;
     }
 }
 
 @media(max-width:1366px) {
     .w3layouts-main {
-        width: 30%;
+        width: 100%;
     }
 }
 
 @media(max-width:1280px) {
     .w3layouts-main {
-        width: 33%;
+        width: 30%;
     }
 
     .agileheader h1 {
@@ -266,14 +287,22 @@ input[type="submit"] {
 
 @media(max-width:1080px) {
     .w3layouts-main {
-        width: 49%;
+        width: 50%;
     }
+
+        .w3layouts-main h1 {
+            margin-top: 150px;
+        }
 }
 
 @media(max-width:1024px) {
     .w3layouts-main {
-        width: 40%;
+        width: 50%;
     }
+
+        .w3layouts-main h1 {
+            margin-top: 150px;
+        }
 }
 
 @media(max-width:991px) {
@@ -282,6 +311,7 @@ input[type="submit"] {
     }
 
     .agileheader h1 {
+        margin-top: 150px;
         font-size: 38px;
     }
 
@@ -311,6 +341,7 @@ input[type="submit"] {
     }
 
     .agileheader h1 {
+        margin-top: 60px;
         font-size: 33px;
         letter-spacing: 8px;
     }
@@ -443,7 +474,7 @@ input[type="submit"] {
     .agileheader h1 {
         font-size: 25px;
         letter-spacing: 4px;
-        margin: 34px 0px;
+        margin: 50px 0px;
     }
 
     .w3layouts-main h2 {
@@ -505,7 +536,7 @@ input[type="submit"] {
 @media (max-width: 384px) {
     .agileheader h1 {
         font-size: 23px;
-        margin: 31px 0px;
+        margin: 50px 0px;
     }
 
     .w3layouts-main {
@@ -514,7 +545,7 @@ input[type="submit"] {
 
     input[type="email"], input[type="password"] {
         margin: 10px 0px;
-        width: 83%;
+        width: 100%;
         padding: 10px 0px 10px 39px;
     }
 
@@ -557,7 +588,7 @@ input[type="submit"] {
 
 @media (max-width: 375px) {
     .agileheader h1 {
-        margin: 32px 0px;
+        margin: 50px 0px;
     }
 
     .w3layouts-main span {
@@ -616,7 +647,7 @@ input[type="submit"] {
 @media (max-width: 320px) {
     .agileheader h1 {
         font-size: 20px;
-        margin: 20px 0px;
+        margin: 50px 0px;
         letter-spacing: 3px;
     }
 
@@ -626,8 +657,8 @@ input[type="submit"] {
     }
 
     .w3layouts-main {
-        padding: 24px 28px;
-        width: 73%;
+        padding: 15px 28px;
+        width: 100%;
     }
 
     input[type="email"], input[type="password"] {
@@ -667,6 +698,4 @@ input[type="submit"] {
         line-height: 27px;
         margin: 0em 0.5em;
     }
-}
-/*--//responsive--*/
-
+}*/

@@ -204,6 +204,9 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="css\footer.css" />
+    <Content Include="css\login.css" />
+    <Content Include="css\register.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -237,7 +240,11 @@
     <Content Include="images\accessories\XBOX controller.jpg" />
     <Content Include="images\accessories\XBOX360-SpeedWheel.jpg" />
     <Content Include="images\accessories\xbox360_wa.png" />
+    <Content Include="images\arrow.png" />
+    <Content Include="images\arrow1.png" />
     <Content Include="images\bag.png" />
+    <Content Include="images\bg.png" />
+    <Content Include="images\call_of_duty.jpg" />
     <Content Include="images\consoles\B04-Gun-Game-Big-Handle.png" />
     <Content Include="images\consoles\ChargePlay-QuadJoy-Con-ControllerCharger.png" />
     <Content Include="images\consoles\evofox-gamebox.png" />
@@ -254,6 +261,13 @@
     <Content Include="images\consoles\xbox1.jpg" />
     <Content Include="images\consoles\xbox360.jpg" />
     <Content Include="images\favorite.ico" />
+    <Content Include="images\FO4.png" />
+    <Content Include="images\GameNews\bf68468c06a24614857295a4936c27b3-1024x576.jpg" />
+    <Content Include="images\GameNews\evil-dead-mission-six-1024x576.jpg" />
+    <Content Include="images\GameNews\GameNew_1.jpg" />
+    <Content Include="images\GameNews\Khung-1-9-1024x576.jpg" />
+    <Content Include="images\GameNews\maxresdefault-17-1024x576.jpg" />
+    <Content Include="images\GameNews\pokemon-1024x576.jpg" />
     <Content Include="images\games\activision_cod.jpg" />
     <Content Include="images\games\activision_prot.jpg" />
     <Content Include="images\games\assasins-creed-odyssey.jpg" />
@@ -272,6 +286,7 @@
     <Content Include="images\games\tti_evolve.jpg" />
     <Content Include="images\games\tti_gta.jpg" />
     <Content Include="images\games\valorant.jpg" />
+    <Content Include="images\garen.jpg" />
     <Content Include="images\handhelds\5.1-X7-plus-handheld.jpg" />
     <Content Include="images\handhelds\Anbernic-RG552-80g.jpg" />
     <Content Include="images\handhelds\credev-handheld.jpg" />
@@ -306,6 +321,9 @@
     <Content Include="images\headsets\Razer-Kraken-X-USB.jpg" />
     <Content Include="images\headsets\scuf_hero_h1_cherryblossom_dt_3.png" />
     <Content Include="images\headsets\voyager-4300UC.jpg" />
+    <Content Include="images\icon1.png" />
+    <Content Include="images\img1.png" />
+    <Content Include="images\img2.png" />
     <Content Include="images\keyboards\Alloy-Core-RGB-Membrane.png" />
     <Content Include="images\keyboards\AlloyElite2.png" />
     <Content Include="images\keyboards\AlloyMKW100.png" />
@@ -317,6 +335,8 @@
     <Content Include="images\keyboards\perixx-perido-505.jpg" />
     <Content Include="images\keyboards\RubberKeyboardTexturizedRubberGrip.png" />
     <Content Include="images\keyboards\steel-apex-pro-gaming-keyboard.jpg" />
+    <Content Include="images\LOL.jpg" />
+    <Content Include="images\mail.png" />
     <Content Include="images\mousespeakers\DuoCast-USB-Microphone.png" />
     <Content Include="images\mousespeakers\PulsefireCoreRGBMouse.png" />
     <Content Include="images\mousespeakers\PulsefireDart-Wireless.png" />
@@ -326,7 +346,15 @@
     <Content Include="images\mousespeakers\QuadCast-S–USB-Condenser.png" />
     <Content Include="images\mousespeakers\QuadCast–USBCondenser.png" />
     <Content Include="images\mousespeakers\SoloCast–USB.png" />
+    <Content Include="images\need_for_speed.jpg" />
+    <Content Include="images\overlay.png" />
+    <Content Include="images\pass.png" />
+    <Content Include="images\search copy.png" />
     <Content Include="images\search.png" />
+    <Content Include="images\sliders\banner1.jpg" />
+    <Content Include="images\sliders\banner2.jpg" />
+    <Content Include="images\sliders\banner3.jpg" />
+    <Content Include="images\social-icons.png" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
@@ -440,6 +468,7 @@
     <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\Account\NotificationConfirmEmail.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Shared\_LayoutOld.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
