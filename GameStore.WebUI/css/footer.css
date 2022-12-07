@@ -94,7 +94,6 @@ body {
     background-size: inherit;
     background-attachment: fixed;
     background-color: #55ACEE;
-
 }
 
 h1 {
@@ -127,9 +126,9 @@ h1 {
 
 h3, h2 {
     color: #00CED1;
-    font-size: 2em;
+    font-size: 0.5em;
     font-weight: 100;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     font-family: 'Khand', sans-serif;
 }
 
@@ -205,11 +204,12 @@ p {
 }
 
 .w3ls-grids form input[type="submit"] {
-    background: url(../images/search.png)#fff no-repeat center;
+    background: url(../images/search.png) #fff no-repeat center;
     width: 43px;
-    height: 38px;
+    height: 100%;
     border: none;
     padding: 0;
+    margin: 0;
     -webkit-appearance: none;
     outline: none;
     position: absolute;
@@ -219,20 +219,21 @@ p {
 }
 
 ::-webkit-input-placeholder {
-    color: #000 !important;
+    color: #bdb9b9 !important;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-    color: #000 !important;
+    color: #bdb9b9 !important;
 }
 
 ::-moz-placeholder { /* Firefox 19+ */
-    color: #000 !important;
+    color: #bdb9b9 !important;
 }
 
 :-ms-input-placeholder {
-    color: #000 !important;
+    color: #bdb9b9 !important;
 }
+
 /*--//search--*/
 /*--social-icons--*/
 .agileits-bottom-grids.social-icons {
@@ -476,7 +477,7 @@ p {
 
 @media(max-width:480px) {
     h3, h2 {
-        margin-bottom: 0.3em;
+        margin-bottom: 1em;
     }
 
     .footer-row {
