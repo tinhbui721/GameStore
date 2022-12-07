@@ -24,6 +24,10 @@ namespace GameStore.Domain.Identity
             _store = store;
         }
 
+        public string HashPassword(string password)
+        {
+            return PasswordHasher.HashPassword(password);
+        }
         public override Task<IdentityResult> CreateAsync(AppUser user, string password)
         {
             try

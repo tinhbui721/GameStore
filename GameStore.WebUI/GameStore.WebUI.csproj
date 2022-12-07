@@ -469,6 +469,7 @@
     <Content Include="Views\Account\NotificationConfirmEmail.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Shared\_LayoutOld.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

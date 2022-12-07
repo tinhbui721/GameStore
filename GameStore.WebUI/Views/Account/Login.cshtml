@@ -898,7 +898,10 @@
                 </div>
                 <div class="form-bottom">
                     <span>@Html.CheckBoxFor(m => m.RememberMe)Remember Me</span>
-                    <h6><a href="#">Forgot Password?</a></h6>
+                    @*<h6><a href="#">Forgot Password?</a></h6>*@
+                    <div class="col-md-offset-1 col-md-10">
+                        @Html.ActionLink("Forgot Password?", "ForgotPassword")
+                    </div>
                 </div>
                 <input type="submit" value="login" name="login">
                 <div class="form-group">

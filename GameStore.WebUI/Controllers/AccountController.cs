@@ -79,6 +79,37 @@ namespace GameStore.WebUI.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(LoginViewModel model)
+        {
+            var user = UserManager.FindByEmail(model.Email);
+            if (user != null)
+            {
+                Random random = new Random();
+                string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                string newPass = new string(Enumerable.Repeat(chars, 10).Select(s => s[random.Next(s.Length)]).ToArray());
+                user.PasswordHash = UserManager.HashPassword(newPass);
+                UserManager.Update(user);
+                SendMail.SendEMail(user.Email, "GameStore reset password", "Your new password is: " + newPass);
+                ViewBag.code = 1;
+            }
+            else
+            {
+                ViewBag.code = 0;
+            }
+
+            return View("ForgotPassword");
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult ResendConfirm(RegisterViewModel model)
