@@ -50,7 +50,7 @@
             border-bottom-right-radius: .1em;
             border-bottom-left-radius: .1em;
         }
-
+    
         .flip-card .top-flip {
             position: absolute;
             width: 100%;
@@ -111,16 +111,21 @@
         }
     }
 
+    .card-body p {
+        color: black;
+    }
     /*css for card flex*/
     .card-wrapper {
         display: flex;
         background-color: white;
     }
+
     .card-item {
         flex: 1;
         margin: 0 10px;
         transition: 0.5s;
     }
+
     .card-bg {
         position: relative;
         width: 100%;
@@ -146,8 +151,7 @@
         <div class="row">
             <div class="col-md-6" style=" margin-top: 50px;">
                 <h1>Game Store</h1>
-                <p>Welcome to the amazing game world!</p>
-
+                <p style="color: black; text-align: center">Welcome to the amazing game world!</p>
             </div>
             <div class="col-md-6">
                 <img class="banner_img" src="~/images/garen.jpg" alt="Garen" width="100%" height="100%" />
@@ -200,7 +204,7 @@
     </div>
 </div>
 
-<h3 class="text-center text-uppercase" style="font-size: 3rem; color: red;">Sale off for Christmas Day</h3>
+<h3 class="text-center text-uppercase" style="font-size: 3rem; color: red;">Sale off for Tet Holiday</h3>
 <div class="jumbotron" style="background-color: #f01f31">
 
     <div class="countdown-timer">
@@ -336,7 +340,7 @@
         interval: 5000
     })
 
-    const countToDate = new Date('2022-12-25T00:00:00')
+    const countToDate = new Date('2023-01-22T00:00:00')
     let previousTimeBetweenDates
     setInterval(() => {
         const currentDate = new Date()
@@ -393,7 +397,7 @@
 
     /* js for card flex */
     const allItemCard = document.querySelectorAll('.card-bg');
-    
+
     function onFlexCard(itemActive) {
         console.log(itemActive);
         allItemCard.forEach(i => {
