@@ -168,17 +168,23 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: 'Numbers of User',
+                    data: [1, 2, 3, 5, 7, 12, 15, 14, 10, 14, 16, 20],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
                         'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(50, 168, 82, 0.2)',
+                        'rgba(168, 154, 50, 0.2)',
+                        'rgba(50, 62, 168, 0.2)',
+                        'rgba(168, 50, 160, 0.2)',
+                        'rgba(79, 194, 182, 0.2)',
+                        'rgba(150, 150, 39, 0.2)',
                     ],
                     borderColor: [
                         'rgba(255,99,132,1)',
@@ -186,7 +192,13 @@
                         'rgba(255, 206, 86, 1)',
                         'rgba(75, 192, 192, 1)',
                         'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(50, 168, 82, 1)',
+                        'rgba(168, 154, 50, 1)',
+                        'rgba(50, 62, 168, 1)',
+                        'rgba(168, 50, 160, 1)',
+                        'rgba(79, 194, 182, 1)',
+                        'rgba(150, 150, 39, 1)',
                     ],
                     borderWidth: 1
                 }]
@@ -206,17 +218,25 @@
             type: 'doughnut',
             data: {
                 labels: [
-                    'Red',
-                    'Blue',
-                    'Yellow'
+                    'Console',
+                    'Handheld',
+                    'Accessory',
+                    'Game',
+                    'Headset',
+                    'Keyboard',
+                    'Mouse and Speaker'
                 ],
                 datasets: [{
                     label: 'My First Dataset',
-                    data: [300, 50, 100],
+                    data: [15, 19, 12, 4, 15, 11, 9],
                     backgroundColor: [
                         'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
+                        'rgb(255, 205, 86)',
+                        'rgba(50, 62, 168)',
+                        'rgba(168, 50, 160)',
+                        'rgba(79, 194, 182)',
+                        'rgba(150, 150, 39)',
                     ],
                     hoverOffset: 4
                 }]
