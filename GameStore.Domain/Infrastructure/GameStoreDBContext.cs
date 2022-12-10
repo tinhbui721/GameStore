@@ -31,6 +31,7 @@ namespace GameStore.Domain.Infrastructure
         public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
 
-        public System.Data.Entity.DbSet<GameStore.Domain.Model.Feedback> Feedbacks { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<DiscountCode> DiscountCodes { get; set; }
     }
 }

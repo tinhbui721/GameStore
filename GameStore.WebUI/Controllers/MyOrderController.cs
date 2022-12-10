@@ -26,8 +26,8 @@ namespace GameStore.WebUI.Controllers
                                    on o.UserId equals u.Id
                                  where o.UserId == userid
                                  orderby o.OrderId descending
-                                 select new { o.OrderId, o.UserId, u.UserName, o.FullName, o.Address, o.City, o.State, o.Zip, o.ConfirmationNumber, o.DeliveryDate };
-                    list = orders.Select(o => new OrderViewModel { OrderId = o.OrderId, UserId = o.UserId, UserName = o.UserName, FullName = o.FullName, Address = o.Address, City = o.City, State = o.State, Zip = o.Zip, ConfirmationNumber = o.ConfirmationNumber, DeliveryDate = o.DeliveryDate }).ToList();
+                                 select new { o.OrderId, o.UserId, o.Discount, u.UserName, o.FullName, o.Address, o.City, o.State, o.Zip, o.ConfirmationNumber, o.DeliveryDate };
+                    list = orders.Select(o => new OrderViewModel { OrderId = o.OrderId, Discount = o.Discount, UserId = o.UserId, UserName = o.UserName, FullName = o.FullName, Address = o.Address, City = o.City, State = o.State, Zip = o.Zip, ConfirmationNumber = o.ConfirmationNumber, DeliveryDate = o.DeliveryDate }).ToList();
 
                     foreach (OrderViewModel order in list)
                     {

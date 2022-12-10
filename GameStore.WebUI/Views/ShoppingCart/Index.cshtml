@@ -11,6 +11,7 @@
 }
 else
 {
+
     <table class="table table-striped" id="modelList">
         <thead>
             <tr>
@@ -55,10 +56,29 @@ else
             }
         </tbody>
         <tfoot>
-            <tr><td></td><td></td><td></td><td></td><td style="color:red">@Html.FormattedCurrency(total)</td><td>@Html.ActionLink("Checkout", "Checkout", new { controller = "ShoppingCart" }, new { @class = "btn btn-primary" })</td></tr>
-        </tfoot>
-    </table>
-}
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    @using (Html.BeginForm("CheckDiscountCode", "ShoppingCart", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <input type="text" name="code" placeholder="Nhập mã giảm giá" size=3 class="form-control">
+                        <br />
+                    <td>
+                        <input class="btn btn-success" type="submit" value="Áp mã giảm giá">
+                    </td>
+                    }
+                    </td>
+                    @if (ViewBag.discount != null && ViewBag.discount != 0)
+                    {
+                        total = total - total * ViewBag.discount / 100;
+                    }
+                    <td style="color:red">@Html.FormattedCurrency(total)</td>
+                    <td>@Html.ActionLink("Checkout", "Checkout", new { controller = "ShoppingCart" }, new { @class = "btn btn-primary" })</td>
+                </tr>
+            </tfoot>
+        </table>
+    }
 @if (ViewBag.code == 1)
 {
     <script type="text/javascript">

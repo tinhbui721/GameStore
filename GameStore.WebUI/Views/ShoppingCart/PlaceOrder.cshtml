@@ -115,6 +115,10 @@
         }
     </tbody>
     <tfoot>
-        <tr><td></td><td></td><td></td><td>Total:</td><td>@Html.FormattedCurrency(total)</td></tr>
+        @if (Model.Discount != 0)
+        {
+            total = total - total * Model.Discount / 100;
+        }
+        <tr><td></td><td></td><td>Discount:  @Model.Discount.ToString()% </td><td>Total:</td><td>@Html.FormattedCurrency(total)</td></tr>
     </tfoot>
 </table>

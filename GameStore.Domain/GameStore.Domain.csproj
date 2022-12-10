@@ -97,8 +97,8 @@
     <Compile Include="Identity\AppRole.cs" />
     <Compile Include="Identity\AppUser.cs" />
     <Compile Include="Infrastructure\IdentityDbInitializer.cs" />
+    <Compile Include="Model\DiscountCode.cs" />
     <Compile Include="Model\Feedback.cs" />
-    <Compile Include="Model\Model1.cs" />
     <Compile Include="Model\OrderItem.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Review.cs" />

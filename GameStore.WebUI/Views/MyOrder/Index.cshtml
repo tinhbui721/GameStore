@@ -76,7 +76,7 @@ else
                     <table class="table table-striped" id="modelList">
                         <thead>
                             <tr>
-                                <th>Product Id</th>
+                                <th>Image</th>
                                 <th>Product Name</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
@@ -87,7 +87,9 @@ else
                             @foreach (var item in order.Items)
                             {
                                 <tr>
-                                    <td>@item.ProductId</td>
+                                    <td>
+                                        <img src="~/images/@item.Image" height="50" alt="Image">
+                                    </td>
                                     <td>@item.ProductName</td>
                                     <td>@Html.FormattedCurrency(item.GetDiscountedPrice())</td>
                                     <td>@item.Quantity</td>
@@ -97,7 +99,11 @@ else
                             }
                         </tbody>
                         <tfoot>
-                            <tr><td></td><td></td><td></td><td>Total:</td><td>@Html.FormattedCurrency(total)</td></tr>
+                            @if (order.Discount != 0)
+                            {
+                                total = total - total * order.Discount / 100;
+                            }
+                            <tr><td></td><td></td><td>Discount:  @order.Discount.ToString()%</td><td>Total:</td><td>@Html.FormattedCurrency(total)</td></tr>
                         </tfoot>
                     </table>
                 </div>

@@ -15,6 +15,29 @@ namespace GameStore.WebUI.Controllers
     [Authorize]
     public class ShoppingCartController : Controller
     {
+        public static int discount = 0; 
+
+        [AllowAnonymous]
+        public ActionResult CheckDiscountCode(string code)
+        {
+            using (GameStoreDBContext context = new GameStoreDBContext())
+            {
+                var maGiamGia = context.DiscountCodes.FirstOrDefault(x => x.Code == code);
+                if(maGiamGia != null)
+                {
+                    ViewBag.discount = maGiamGia.Discount;
+                    discount = maGiamGia.Discount;
+                }
+            }
+            ShoppingCart cart = (ShoppingCart)Session["ShoppingCart"];
+            if (cart == null)
+            {
+                cart = new ShoppingCart();
+                Session["ShoppingCart"] = cart;
+            }
+            return View("Index", cart);
+        }
+
         // GET: ShoppingCart
         [AllowAnonymous]
         public ActionResult Index()
@@ -116,6 +139,7 @@ namespace GameStore.WebUI.Controllers
                     using (GameStoreDBContext context = new GameStoreDBContext())
                     {
                         Order newOrder = context.Orders.Create();
+                        newOrder.Discount = discount;
                         newOrder.FullName = value.FullName;
                         newOrder.Address = value.Address;
                         newOrder.City = value.City;
@@ -123,7 +147,7 @@ namespace GameStore.WebUI.Controllers
                         newOrder.Zip = value.Zip;
                         newOrder.DeliveryDate = DateTime.Now.AddDays(14);
                         newOrder.ConfirmationNumber = DateTime.Now.ToString("yyyyMMddHHmmss");
-                        newOrder.UserId = User.Identity.GetUserId() != null ? User.Identity.GetUserId() : "705fccac-c0c6-4d85-b8df-775e7c722129";
+                        newOrder.UserId = User.Identity.GetUserId() != null ? User.Identity.GetUserId() : "b7bfb5f2-20ed-4e59-beef-65fd34bf0373";
                         context.Orders.Add(newOrder);
                         cart.GetItems().ForEach(c => context.OrderItems.Add(new OrderItem { OrderId = newOrder.OrderId, ProductId = c.GetItemId(), Quantity = c.Quantity }));
                         context.SaveChanges();
@@ -136,9 +160,9 @@ namespace GameStore.WebUI.Controllers
                                     join u in context.Users
                                       on o.UserId equals u.Id
                                     where o.OrderId == newOrder.OrderId
-                                    select new { o.OrderId, o.UserId, u.UserName, o.FullName, o.Address, o.City, o.State, o.Zip, o.ConfirmationNumber, o.DeliveryDate };
+                                    select new { o.OrderId, o.Discount, o.UserId, u.UserName, o.FullName, o.Address, o.City, o.State, o.Zip, o.ConfirmationNumber, o.DeliveryDate };
                         var ord = order.FirstOrDefault();
-                        model = new OrderViewModel { OrderId = ord.OrderId, UserId = ord.UserId, UserName = ord.UserName, FullName = ord.FullName, Address = ord.Address, City = ord.City, State = ord.State, Zip = ord.Zip, ConfirmationNumber = ord.ConfirmationNumber, DeliveryDate = ord.DeliveryDate };
+                        model = new OrderViewModel { OrderId = ord.OrderId, Discount = ord.Discount, UserId = ord.UserId, UserName = ord.UserName, FullName = ord.FullName, Address = ord.Address, City = ord.City, State = ord.State, Zip = ord.Zip, ConfirmationNumber = ord.ConfirmationNumber, DeliveryDate = ord.DeliveryDate };
 
                         var orderitems = from i in context.OrderItems
                                          join p in context.Products

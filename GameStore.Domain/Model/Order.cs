@@ -15,6 +15,7 @@ namespace GameStore.Domain.Model
         }
         [Required]
         public int OrderId { get; set; }
+        public int Discount { get; set; }
         [Required]
         public string UserId { get; set; }
         [Required]
