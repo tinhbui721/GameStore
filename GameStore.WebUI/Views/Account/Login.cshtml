@@ -600,15 +600,15 @@
                     font-size: 18px;
                 }
 
-            .w3layouts-main p a {
-                font-size: 17px;
-                letter-spacing: 0px;
-            }
+                .w3layouts-main p a {
+                    font-size: 17px;
+                    letter-spacing: 0px;
+                }
 
-            .w3layouts-main p {
-                font-size: 16px;
-                width: 105%;
-            }
+                .w3layouts-main p {
+                    font-size: 16px;
+                    width: 105%;
+                }
 
             input[type="submit"] {
                 font-size: 17px;
@@ -893,6 +893,9 @@
                 <div class="form-group">
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
                     @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
+                    <div>              
+                        <span toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password">Show password</span>
+                    </div>
                 </div>
                 <div class="form-bottom">
                     <span>@Html.CheckBoxFor(m => m.RememberMe)Remember Me</span>
@@ -912,8 +915,21 @@
         </div>
     </div>
     <!--//main-->
+    <script>
+        ("body").on('click', '.toggle-password', function () {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $("#pass_log_id");
+            if (input.attr("type") === "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+
+        });
+    </script>
 </body>
 </html>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

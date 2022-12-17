@@ -17,9 +17,14 @@
     .zoomIn {
         transition: .2s;
     }
+
+    .zoomInFore:hover {
+        transform: scale(1.02);
+        transition: all ease-in-out .3s;
+    }
 </style>
 <div class="row">
-    <div class="col-sm-6" style="text-align: center;">
+    <div class="col-sm-6 zoomInFore" style="text-align: center; border: 1px solid green; box-shadow: rgb(5, 141, 210) 0px 1px 2px 3px inset;">
         <img src="~/images/@Model.Image" class="img-responsive" style="width: 100%; height: 540px;" alt="Image">
     </div>
     <div class="col-sm-6" style="text-align: left; height: auto">
@@ -38,12 +43,12 @@
             </div>
 
             <div>
-                <p class="bg-info text-center text-uppercase" style="font-weight: bold; font-size:medium; padding: 1%">Super discount when immediately buying*:</p>
-                <p><span class="glyphicon glyphicon-check"></span> 2% discount when paying in cash, card or ATM (-@Html.FormattedCurrency(@Model.GetDiscountedPrice() * 2 / 100))</p>
-                <p><span class="glyphicon glyphicon-check"></span> Give out limited edition premium mouse pad</p>
-                <p><span class="glyphicon glyphicon-check"></span> Super-speed delivery from 1 to 3 hours within districts of Ho Chi Minh City</p>
-                <p><span class="glyphicon glyphicon-check"></span> Price includes invoice</p>
-                <p><span class="glyphicon glyphicon-check"></span> Nationwide delivery</p>
+                <p class="bg-primary text-center text-uppercase" style="font-weight: bold; font-size:medium; padding: 1%">Super discount when immediately buying*:</p>
+                <p class="text-success"><span class="glyphicon glyphicon-check"></span> 2% discount when paying in cash, card or ATM (-@Html.FormattedCurrency(@Model.GetDiscountedPrice() * 2 / 100))</p>
+                <p class="text-success"><span class="glyphicon glyphicon-check"></span> Give out limited edition premium mouse pad</p>
+                <p class="text-success"><span class="glyphicon glyphicon-check"></span> Super-speed delivery from 1 to 3 hours within districts of Ho Chi Minh City</p>
+                <p class="text-success"><span class="glyphicon glyphicon-check"></span> Price includes invoice</p>
+                <p class="text-success"><span class="glyphicon glyphicon-check"></span> Nationwide delivery</p>
             </div>
 
             <div>
@@ -69,12 +74,12 @@
             </div>
 
             <div style="margin-top: 5rem;">
-                <p>Please call to check quantity before coming to the store:</p>
-                <button class='btn col-sm-6 btnInfo' style="padding: .5rem; border: 1px solid white;">
+                <p class="text-danger">Please call to check quantity before coming to the store:</p>
+                <button class='btn col-sm-6 btnInfo btn-info' style="padding: .5rem; border: 1px solid white;">
                     <span class="glyphicon glyphicon-phone-alt"></span>
                     <p style="font-size: x-small">MUA HÀNG 1900 6098</p>
                 </button>
-                <button class='btn col-sm-6 btnInfo' style="padding: .5rem; border: 1px solid white;">
+                <button class='btn col-sm-6 btnInfo btn-info' style="padding: .5rem; border: 1px solid white;">
                     <span class="glyphicon glyphicon-phone"></span>
                     <p style="font-size: x-small">HOTLINE 0932 600 188</p>
                 </button>
@@ -129,7 +134,7 @@
 </div>
 
 <div class="row">
-    @if (!Request.IsAuthenticated)
+    @if (Request.IsAuthenticated)
     {
         <div class="col-sm-6">
 
