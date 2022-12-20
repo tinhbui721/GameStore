@@ -204,9 +204,16 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\fontawesome-all.css" />
     <Content Include="css\footer.css" />
+    <Content Include="css\lightcase.css" />
     <Content Include="css\login.css" />
+    <Content Include="css\owl.carousel.css" />
+    <Content Include="css\owl.theme.css" />
     <Content Include="css\register.css" />
+    <Content Include="css\slider-pro.css" />
+    <Content Include="css\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -225,6 +232,9 @@
     <Content Include="Areas\Admin\Views\Store\Product.cshtml" />
     <Content Include="Areas\Admin\Views\Store\Category.cshtml" />
     <Content Include="Areas\Admin\Views\Store\Order.cshtml" />
+    <Content Include="webfonts\fa-brands-400.svg" />
+    <Content Include="webfonts\fa-regular-400.svg" />
+    <Content Include="webfonts\fa-solid-900.svg" />
     <None Include="Properties\PublishProfiles\ect583final - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ecta5.pubxml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
@@ -357,27 +367,52 @@
     <Content Include="images\social-icons.png" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\classie.js" />
+    <Content Include="scripts\demo1.js" />
+    <Content Include="scripts\easing.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery-2.2.3.min.js" />
     <Content Include="scripts\jquery-ui-1.11.4.js" />
     <Content Include="scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="scripts\jquery.countup.js" />
+    <Content Include="scripts\jquery.events.touch.js" />
     <Content Include="scripts\jquery.fancybox-buttons.js" />
     <Content Include="scripts\jquery.fancybox-media.js" />
     <Content Include="scripts\jquery.fancybox-thumbs.js" />
     <Content Include="scripts\jquery.fancybox.js" />
     <Content Include="scripts\jquery.fancybox.pack.js" />
     <Content Include="scripts\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="scripts\jquery.sliderPro.min.js" />
     <Content Include="scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="scripts\jquery.validate.js" />
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\jquery.waypoints.min.js" />
+    <Content Include="scripts\lightcase.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
+    <None Include="Views\Common\About.cshtml" />
+    <None Include="Views\Common\ExchangePolicy.cshtml" />
+    <Content Include="scripts\move-top.js" />
+    <Content Include="scripts\owl.carousel.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="webfonts\fa-brands-400.eot" />
+    <Content Include="webfonts\fa-brands-400.ttf" />
+    <Content Include="webfonts\fa-brands-400.woff" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-regular-400.eot" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.woff" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-solid-900.eot" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.woff" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Apis\AccountController.cs" />
@@ -405,6 +440,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FeedbacksController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\MyOrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />

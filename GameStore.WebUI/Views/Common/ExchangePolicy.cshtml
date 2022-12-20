@@ -1,0 +1,78 @@
+<head>
+    @*<link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/css/lightcase.css" rel="stylesheet" type="text/css">
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+    @*Comment the font to toggle it*@
+    <link href='//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <!--banner-bottom-w3layouts-->
+    <section class="banner-bottom-w3layouts py-md-5 py-4">
+        <div class="container">
+            <div class="inner-sec-w3ls py-md-5 py-4">
+                <h3 class="tittle-wthree text-center mb-lg-5 mb-3">
+                    <span>Our</span>EXCHANGE POLICY
+                </h3>
+                <div>
+                    <ol>
+                        <li>Return time</li>
+                        <p>Returns within 15 days from the date of receipt of the goods.</p>
+                        <li>Location</li>
+                        <p>Applies to all Game Store products.</p>
+                        <li>Terms of return</li>
+                        <ul>
+                            <li>Exchanged goods must still have labels, barcodes, unused, and have an intact purchase invoice attached.</li>
+                            <li>In case of return or exchange without invoice, please contact Customer Support for assistance.</li>
+                            <li>Orders can only be exchanged once.</li>
+                            <li>The value of products exchanged/returned is calculated according to the unit price on the purchase invoice.</li>
+                            <li>If the error is caused by the publisher, Game Store will bear the full shipping fee for exchange/return.</li>
+                        </ul>
+                        <li>Online exchange/return instructions</li>
+                        <ul>
+                            <li>The customer sends the goods to the warehouse with the content and address: The content written on the order is sent: Code 123456, Address: Dormitory area A, VNUHCM</li>
+                            <li>Game Store handles exchange/return orders: When receiving the goods sent, Game Store will check and call to notify, confirm the request for exchange/return and return the goods to the customer within 1 to 3 working days.</li>
+                            <li>Customers who need support, please contact: 0339876802</li>
+                        </ul>
+                    </ol>
+                </div>
+                <h4 class="text-center"><span>Thank you for accompanying Game Store.</span></h4>
+            </div>
+        </div>
+    </section>
+    <!--//banner-bottom-w3layouts-->
+
+    <!-- js -->
+    <script src="~/scripts/jquery-2.2.3.min.js"></script>
+    <script src="~/scripts/lightcase.js"></script>
+    <script src="~/scripts/jquery.events.touch.js"></script>
+
+    <script>
+        $('.showcase').lightcase();
+    </script>
+
+    <!-- //js -->
+    <script src="~/scripts/bootstrap.js"></script>
+    <!--/ start-smoth-scrolling -->
+    <script src="~/scripts/move-top.js"></script>
+    <script src="~/scripts/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+        });
+    </script>
+    <!--// end-smoth-scrolling -->
+</body>

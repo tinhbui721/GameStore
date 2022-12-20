@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Game Store</title>
-    <link href="../../css/footer.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/footer.css" rel="stylesheet" type="text/css" media="all" />
     <link href='//fonts.googleapis.com/css?family=Khand:400,300,500,600,700' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,500,700,900,400italic' rel='stylesheet' type='text/css'>   
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,500,700,900,400italic' rel='stylesheet' type='text/css'>
     <link rel="icon" type="image/x-icon" href="~/images/favorite.ico">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     @Scripts.Render("~/bundles/jquery")
@@ -25,6 +25,9 @@
             float: none;
         }
     </style>
+    <link href="~/css/slider-pro.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/css/owl.carousel.css" type="text/css" media="all">
+    <link rel="stylesheet" href="~/css/owl.theme.css" type="text/css" media="all">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -102,11 +105,12 @@
                         <div class="w3ls-grids grid-three">
                             <h3>TRỢ GIÚP</h3>
                             <ul>
+                                <li><a href="@Url.Action("About","Common")"><i></i>Về chúng tôi</a></li>
                                 <li><a href="#"><i></i>Quy định chung</a></li>
                                 <li><a href="#"><i></i>Quy định đặt cọc</a></li>
                                 <li><a href="#"><i></i>Quy định bảo hành</a></li>
                                 <li><a href="#"><i></i>Chính sách vận chuyển</a></li>
-                                <li><a href="#"><i></i>Chính sách đổi / trả hàng</a></li>
+                                <li><a href="@Url.Action("ExchangePolicy", "Common")"><i></i>Chính sách đổi trả</a></li>
                                 <li><a href="#"><i></i>Tuyển dụng</a></li>
                             </ul>
                         </div>
