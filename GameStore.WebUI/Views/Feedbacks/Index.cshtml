@@ -4,17 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Danh sách các phản hồi</h2>
+<h2>List of Feedback</h2>
 <table class="table">
     <tr>
         <th>
-            Tiêu đề
+            Title
         </th>
         <th>
-            Nội dung
+            Content
         </th>
         <th>
-            Ngày gửi phản hồi
+            Date
         </th>
         <th></th>
     </tr>
@@ -31,7 +31,7 @@
             @Html.DisplayFor(modelItem => item.DateFeedback)
         </td>
         <td>
-            @Html.ActionLink("Xóa", "Delete", new { id=item.IdFeedback })
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdFeedback })
         </td>
     </tr>
 }

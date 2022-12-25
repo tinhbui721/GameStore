@@ -125,7 +125,11 @@ namespace GameStore.WebUI.Controllers
                 foreach (var item in model2)
                 {
                     item.User = new AppUser();
-                    item.User.UserName = context.Users.Where(x => x.Id == item.User_Id).FirstOrDefault().UserName;
+                    var y = context.Users.Where(x => x.Id == item.User_Id).FirstOrDefault();
+                    if (y != null)
+                    {
+                        item.User.UserName = y.UserName;
+                    }
                 }
                 var query = from product in context.Products
                             where product.ProductId == id
@@ -245,7 +249,7 @@ namespace GameStore.WebUI.Controllers
                     {
                         cart.AddItem(value.Id, product);
                         Session["CartCount"] = cart.GetItems().Count();
-                        return RedirectToAction(product.Category.CategoryName, new {code = 2});
+                        return RedirectToAction(product.Category.CategoryName, new { code = 2 });
                     }
                 }
             }

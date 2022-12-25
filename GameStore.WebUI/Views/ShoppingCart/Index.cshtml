@@ -62,10 +62,10 @@ else
                 <td>
                     @using (Html.BeginForm("CheckDiscountCode", "ShoppingCart", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
-                        <input type="text" name="code" placeholder="Nhập mã giảm giá" size=3 class="form-control">
+                        <input type="text" name="code" placeholder="Type discount code" size=6 class="form-control">
                         <br />
                     <td>
-                        <input class="btn btn-success" type="submit" value="Áp mã giảm giá">
+                        <input class="btn btn-success" type="submit" value="Use">
                     </td>
                     }
                     </td>
